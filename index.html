@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.6/Sortable.min.js" integrity="sha512-csIng5zcB+XpulRUa+ev1zKo7zRNGpEaVfNB9On1no9KYTEY/rLGAEEpvgdw6nim1WdTuihZY1eqZ31K7/fZjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <style>
 
 h6{
@@ -19,18 +20,18 @@ h6{
 </style>
 </head>
 <body>
-   <div class="grid grid-cols-3 w-fit justify-self-center ">
+   <div id="container" value="" class="grid grid-cols-3 w-fit justify-self-center wrapper mt-32 border p-4 border-black rounded-lg ">
 
-        <div  id="div1" draggable="true" class="card"> <h6 class=" first-box  w-28 h-28 text-4xl bg-blue-300 " id="btn1" draggable="true" >1</h6> </div>
-        <div class="card" > <h6 id="btn2" draggable="true" class=" second-box w-28 h-28 text-4xl bg-orange-400" >2</h6>
+        <div  id="div1" draggable="true" class="card"> <h6 value="1" class=" box first-box  w-28 h-28 text-4xl bg-blue-300 " id="btn1" draggable="true" >1</h6> </div>
+        <div class="card" > <h6 value="2" id="btn2" draggable="true" class=" box second-box w-28 h-28 text-4xl bg-orange-400" >2</h6>
         </div>
-        <div class="card"  > <h6 draggable="true" id="btn3" class="third-box  w-28 h-28 text-4xl bg-yellow-400 ">3</h6> </div>
-        <div class="card" > <h6 draggable="true" id="btn4" class=" fourth-box w-28 h-28 text-4xl  bg-purple-500">4</h6> </div>
-        <div class="card" > <h6 draggable="true" id="btn5" class=" fifth-box w-28 h-28 text-4xl bg-gray-500 ">5</h6> </div>
-        <div class="card" > <h6 draggable="true" id="btn6" class="sixth-box  w-28 h-28 text-4xl bg-red-500">6</h6> </div>
-        <div class="card" > <h6 draggable="true" id="btn7" class=" seventh-box  w-28 h-28  text-4xl bg-green-500">7</h6> </div>
-        <div class="card" > <h6 draggable="true" id="btn8" class="eighth-box  w-28 h-28  text-4xl bg-[#ca6f1e] ">8</h6> </div>
-        <div class="card" > <h6 draggable="true" id="btn9" class="ninth-box  w-28 h-28  text-4xl bg-[#BDB76B] ">9</h6> </div>
+        <div class="card"  > <h6 value="3" draggable="true" id="btn3" class=" box third-box  w-28 h-28 text-4xl bg-yellow-400 ">3</h6> </div>
+        <div class="card" > <h6 value="4" draggable="true" id="btn4" class=" box fourth-box w-28 h-28 text-4xl  bg-purple-500">4</h6> </div>
+        <div class="card" > <h6 value="5" draggable="true" id="btn5" class=" box fifth-box w-28 h-28 text-4xl bg-gray-500 ">5</h6> </div>
+        <div class="card" > <h6 value="6" draggable="true" id="btn6" class=" box sixth-box  w-28 h-28 text-4xl bg-red-500">6</h6> </div>
+        <div class="card" > <h6 value="7" draggable="true" id="btn7" class=" box seventh-box  w-28 h-28  text-4xl bg-green-500">7</h6> </div>
+        <div class="card" > <h6 value="8" draggable="true" id="btn8" class=" box eighth-box  w-28 h-28  text-4xl bg-[#ca6f1e] ">8</h6> </div>
+        <div class="card" > <h6 value="9" draggable="true" id="btn9" class=" box ninth-box  w-28 h-28  text-4xl bg-[#BDB76B] ">9</h6> </div>
     </div>
 
     <div class="flex justify-center  gap-10  ">
@@ -38,22 +39,66 @@ h6{
 <div class="flex flex-col pt-6" >
         <h1  id="download"></h1>
 
-        <h5 id="btn" class="border  cursor-pointer rounded-lg border-black p-2 "> Start timer </h5>
+        <h5 id="btn" class="border  cursor-pointer rounded-lg border-black p-2 "> Start  </h5>
     </div>        
 
 
-<button class="justify-self-center flex mt-4 border border-black"  onclick="changetext(),ChangeText(),CHANGEtext(),Changetext(),CHANGETEXT(),CHANGEText(),CHANGE(),Change(),change(),changecolor()" >   
-    Click to change positions 
+
+<button class="justify-self-center flex mt-4 border border-black  self-center "  onclick="changetext(),ChangeText(),CHANGEtext(),Changetext(),CHANGETEXT(),CHANGEText(),CHANGE(),Change(),change(),changecolor()" >   
+   Shuffle
 </button>
 </div>
+
+
+<button  onclick="myFunction()" >click</button>
 
 
 <script>
 
 
+
+
+    function myFunction(){
+     
+        const boxes = document.querySelectorAll(".box")
+        let value = "box"
+        let text = "Lists numbers are" + boxes
+        boxes.forEach((box)=>{
+        console.log(box.innerHTML)
+
+        
+const array = [box.innerHTML]
+// console.log(array)
+
+let newarray = array.values();
+
+for (let value in newarray){
+    console.log(value)
+}
+
+
+// console.log(newarray)
+
+
+    }
+    )
+    // console.log(boxes)
+    }
+
+
+
+    const wrapper = document.querySelector('.wrapper')
+
+// Drag and Drop section  starts
+const dragArea = document.querySelector(".wrapper");
+new Sortable(dragArea)
+
+// Drag and Drop section ends
+
+
 var downloadButton = document.getElementById("download");
 
-var counter = 60;
+var counter = 6;
 
 var newElement = document.createElement("p");
 
@@ -71,11 +116,14 @@ function startDownload() {
 
         counter--;
 
-        if (counter < 0) {           
+        if (counter < 0) { 
+    
+            
+            
 
-        } else {
-
-            newElement.innerHTML = +counter.toString() + " seconds";
+        } else{
+      
+            newElement.innerHTML = "00:" +counter.toString() ;
         }
 
     },1000 );
@@ -96,6 +144,7 @@ function changetext(){
     else if(btn1.innerHTML == '9') {
         btn1.innerHTML = '6'
     }
+    
     else if(btn1.innerHTML == '6'){
         btn1.innerHTML = '8'
 
@@ -436,7 +485,7 @@ function change(){
 // box1
 const box1 = document.querySelector('.first-box')
 const button = document.querySelector("button")
-const colors =['blue','green','yellow','orange','purple','pink','red','orange','brown','violet']
+const colors =['purple','orange','brown','violet','pink','blue','green','yellow','orange','red']
 
 
 box1.style.backgroundColor= 'violet';
@@ -447,10 +496,11 @@ button.addEventListener('click',function(){
 })
 
 
+
 // box2
 const box2 = document.querySelector('.second-box')
 const button2 = document.querySelector("button")
-const color2=['green','yellow','','#11d8d3','violet','brown','pink',]
+const color2=['brown','yellow','violet','#11d8d3','green',]
 
 box2.style.backgroundColor = 'blue';
 
@@ -462,9 +512,11 @@ button2.addEventListener('click',function(){
     box2.style.backgroundColor=color2[colorIndex]
 })
 
-const box3 = document.querySelector('.third-box')
-const button3 = document.querySelector("button")
-const color3=['#782e72','#7289cf','#3211d6','#9c283e','orange','#5e4c50','#cf7872','#16db93']
+
+
+const box3 = document.querySelector('.third-box');
+const button3 = document.querySelector("button");
+const color3=['#782e72','#16db93','#3211d6','#9c283e','orange','#7289cf',,'#5e4c50','#cf7872',]
 
 box3.style.backgroundColor = 'orange';
 
@@ -476,9 +528,11 @@ button3.addEventListener('click',function(){
     box3.style.backgroundColor=color3[colorIndex]
 })
 
+
+
 const box4 = document.querySelector('.fourth-box')
 const button4 = document.querySelector("button")
-const color4=['#d43636','#d48c36','#bad436','#87d436','#36d4b0','#367bd4','#8536d4','#d43668']
+const color4=[,'#bad436','#87d436','#d43636',,'#367bd4','#8536d4','#d43668','#d48c36','#36d4b0']
 
 box4.style.backgroundColor = '#d43636';
 
@@ -492,11 +546,12 @@ button3.addEventListener('click',function(){
 
 
 
+
 const box5 = document.querySelector('.fifth-box')
 const button5 = document.querySelector("button")
-const color5=['#fc0000','#fca400','#00fca4','#3d00fc','#fc00fc','#3900fc','#95a788','#5cc6a6']
+const color5=['#fc00fc','#3900fc','#95a788','#5cc6a6','#fc0000','#fca400','#00fca4','#3d00fc']
 
-box5.style.backgroundColor = '#5cc6a6';
+box5.style.backgroundColor = '#fc0000';
 
 
 
@@ -508,9 +563,10 @@ button5.addEventListener('click',function(){
 
 
 
+
 const box6 = document.querySelector('.sixth-box')
 const button6 = document.querySelector("button")
-const color6=['#c8ad5d','#a6c85d','#5dc8ad','#5db8c8','#6ec85d','#5dc8b6','#c85d5d']
+const color6=['#5db8c8',,'#5dc8b6','#c85d5d','#6ec85d',,'#a6c85d','#5dc8ad','#c8ad5d']
 
 box6.style.backgroundColor = '#6ec85d';
 
@@ -522,9 +578,11 @@ button6.addEventListener('click',function(){
     box6.style.backgroundColor=color6[colorIndex]
 })
 
+
+
 const box7 = document.querySelector('.seventh-box')
 const button7 = document.querySelector("button")
-const color7=['#2f5b0c','#5b0c0c','#5b250c','#5b5b0c','#0c5b18','#0c8b66','#0c6c8b','#8b0c5f']
+const color7=['#5b5b0c',,'#8b0c5f','#2f5b0c','#0c5b18','#0c8b66','#0c6c8b','#5b0c0c','#5b250c']
 
 box7.style.backgroundColor = '#8b0c5f';
 
@@ -536,9 +594,11 @@ button7.addEventListener('click',function(){
     box7.style.backgroundColor=color7[colorIndex]
 })
 
+
+
 const box8 = document.querySelector('.eighth-box')
 const button8 = document.querySelector("button")
-const color8=['#79d73f','#d7d53f','#48d73f','#d73fb9','#d73f6f','#2b4a50']
+const color8=['#48d73f','#d73fb9','#d73f6f','#d7d53f','#2b4a50','#79d73f']
 
 
 box8.style.backgroundColor = '#2b4a50';
@@ -550,15 +610,15 @@ button8.addEventListener('click',function(){
     const colorIndex=parseInt(Math.random()*color8.length);
     box8.style.backgroundColor=color8[colorIndex]
 })
+
+
+
 const box9 = document.querySelector('.ninth-box')
 const button9 = document.querySelector("button")
-const color9=['#4c819d','#335a7d','#464c55','#cbb5ad','#60bde6','#4d182c','#11d8d3','#bb6f42','#fbd375']
+const color9=[,'#bb6f42',,'#cbb5ad','#335a7d','#11d8d3','#fbd375','#60bde6','#4d182c','#4c819d','#464c55']
 
 
 box9.style.backgroundColor = '#60bde6';
-
-
-
 
 button9.addEventListener('click',function(){
     const colorIndex=parseInt(Math.random()*color9.length);
